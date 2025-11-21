@@ -80,8 +80,14 @@ export function UserMenu({ user, profile }: UserMenuProps) {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(profile?.avatar_url || null)
   const [cachedName, setCachedName] = useState<string | null>(null)
   const [isInitialized, setIsInitialized] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
   const router = useRouter()
   const supabase = createClient()
+
+  // Ensure component is mounted on client to avoid hydration mismatch with Radix UI IDs
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Load cache synchronously on client before first paint to avoid flicker
   useLayoutEffect(() => {
@@ -168,10 +174,35 @@ export function UserMenu({ user, profile }: UserMenuProps) {
         .slice(0, 2)
     : user.email?.[0].toUpperCase() || "U"
 
+  // Render placeholder during SSR to avoid hydration mismatch
+  if (!isMounted) {
+    return (
+      <Button 
+        variant="ghost" 
+        className="relative h-10 w-10 rounded-full"
+        disabled
+      >
+        <Avatar className="h-10 w-10">
+          {avatarUrl && (
+            <AvatarImage 
+              src={avatarUrl} 
+              alt={displayName || "User"}
+              className="object-cover"
+            />
+          )}
+          <AvatarFallback>{initials}</AvatarFallback>
+        </Avatar>
+      </Button>
+    )
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+        <Button 
+          variant="ghost" 
+          className="relative h-10 w-10 rounded-full"
+        >
           <Avatar className="h-10 w-10">
             {avatarUrl && (
               <AvatarImage 
