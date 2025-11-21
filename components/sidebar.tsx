@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { useOrganization } from "@/lib/contexts/organization-context";
+import { useOrganization } from "@/lib/contexts/OrganizationContext";
 import {
   LayoutDashboard,
   Users,

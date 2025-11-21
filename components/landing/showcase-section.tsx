@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { useTheme } from "next-themes"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -56,11 +56,19 @@ interface ShowcaseImageProps {
 
 function ShowcaseImage({ showcase, index }: ShowcaseImageProps) {
   const [imageError, setImageError] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const { theme, resolvedTheme } = useTheme()
   const Icon = showcase.icon
 
+  useEffect(() => {
+    // Use setTimeout to avoid synchronous setState in effect
+    const timer = setTimeout(() => setMounted(true), 0)
+    return () => clearTimeout(timer)
+  }, [])
+
   // Determine which theme to use (resolvedTheme handles system theme)
-  const currentTheme = resolvedTheme || theme || "light"
+  // Use "light" as default before mounting to prevent hydration mismatch
+  const currentTheme = mounted ? (resolvedTheme || theme || "light") : "light"
   const isDark = currentTheme === "dark"
   const imagePath = `/showcase/${showcase.imageBase}-${isDark ? "dark" : "light"}.png`
 
@@ -106,6 +114,7 @@ function ShowcaseImage({ showcase, index }: ShowcaseImageProps) {
     <div className="relative rounded-2xl overflow-hidden border-2 border-border hover:border-primary/50 transition-colors duration-300 shadow-lg">
       <div className="aspect-video relative bg-muted rounded-2xl">
         <Image
+          key={imagePath}
           src={imagePath}
           alt={showcase.alt}
           fill
@@ -114,6 +123,7 @@ function ShowcaseImage({ showcase, index }: ShowcaseImageProps) {
           loading={index === 0 ? "eager" : "lazy"}
           priority={index === 0}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          suppressHydrationWarning
         />
       </div>
       {/* Subtle glow effect */}

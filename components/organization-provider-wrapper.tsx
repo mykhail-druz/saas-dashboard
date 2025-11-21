@@ -1,6 +1,6 @@
 "use client"
 
-import { OrganizationProvider } from "@/lib/contexts/organization-context"
+import { OrganizationProvider } from "@/lib/contexts/OrganizationContext"
 
 export function OrganizationProviderWrapper({
   children,

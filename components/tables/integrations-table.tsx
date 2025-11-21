@@ -1,6 +1,6 @@
 "use client"
 
-import { useIntegrations } from "@/hooks/use-integrations"
+import { useIntegrations } from "@/hooks/useIntegrations"
 import {
   Table,
   TableBody,

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { createClient } from "@/lib/supabase/client"
-import { useReports } from "@/hooks/use-reports"
+import { useReports } from "@/hooks/useReports"
 import { Database } from "@/types/database.types"
 import { Button } from "@/components/ui/button"
 import {

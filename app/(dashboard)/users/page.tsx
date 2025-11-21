@@ -4,7 +4,7 @@ import { useState } from "react"
 import { OrganizationMembersTable } from "@/components/tables/organization-members-table"
 import { InviteUserDialog } from "@/components/forms/invite-user-dialog"
 import { Button } from "@/components/ui/button"
-import { useOrganization } from "@/lib/contexts/organization-context"
+import { useOrganization } from "@/lib/contexts/OrganizationContext"
 import { UserPlus, Users } from "lucide-react"
 import { PageHeader } from "@/components/page-header"
 

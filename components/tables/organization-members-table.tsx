@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { useOrganization } from "@/lib/contexts/organization-context";
+import { useOrganization } from "@/lib/contexts/OrganizationContext";
 import { OrganizationMembersService } from "@/lib/services/organization-members.service";
 import type { OrganizationMemberWithProfile } from "@/lib/repositories/organization-members.repository";
 import {

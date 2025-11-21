@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Plus, Plug } from "lucide-react"
 import { Database } from "@/types/database.types"
 import { toast } from "sonner"
-import { useIntegrations } from "@/hooks/use-integrations"
+import { useIntegrations } from "@/hooks/useIntegrations"
 import { PageHeader } from "@/components/page-header"
 
 type Integration = Database["public"]["Tables"]["integrations"]["Row"]

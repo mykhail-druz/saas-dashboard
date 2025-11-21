@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Check, Loader2 } from "lucide-react"
 import { toast } from "sonner"
-import { useOrganization } from "@/lib/contexts/organization-context"
+import { useOrganization } from "@/lib/contexts/OrganizationContext"
 import { Database } from "@/types/database.types"
 
 type Subscription = Database["public"]["Tables"]["subscriptions"]["Row"]

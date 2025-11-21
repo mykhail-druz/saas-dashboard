@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useOrganization } from "@/lib/contexts/organization-context"
+import { useOrganization } from "@/lib/contexts/OrganizationContext"
 import {
   Select,
   SelectContent,

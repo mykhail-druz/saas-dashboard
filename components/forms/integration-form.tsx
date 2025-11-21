@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
-import { useIntegrations } from "@/hooks/use-integrations"
+import { useIntegrations } from "@/hooks/useIntegrations"
 import { Database } from "@/types/database.types"
 import { Button } from "@/components/ui/button"
 import {

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useReports } from "@/hooks/use-reports"
+import { useReports } from "@/hooks/useReports"
 import {
   Table,
   TableBody,

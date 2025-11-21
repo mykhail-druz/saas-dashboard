@@ -14,7 +14,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
 import { formatDistanceToNow } from "date-fns"
-import { useOrganization } from "@/lib/contexts/organization-context"
+import { useOrganization } from "@/lib/contexts/OrganizationContext"
 
 type ActivityLog = Database["public"]["Tables"]["activity_logs"]["Row"]
 

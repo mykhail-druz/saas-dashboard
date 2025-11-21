@@ -73,7 +73,7 @@ export function CTASection() {
                     <Button
                       size="lg"
                       variant="outline"
-                      className="text-base sm:text-lg px-6 sm:px-8 py-3 h-auto w-full sm:w-auto border-white/20 text-black bg-white/90 hover:bg-white"
+                      className="text-base sm:text-lg px-6 sm:px-8 py-3 h-auto w-full sm:w-auto border-white/20 text-white dark:text-white bg-transparent hover:bg-white/10"
                       asChild
                     >
                       <Link href="#pricing">View pricing</Link>

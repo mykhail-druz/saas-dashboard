@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { createClient } from "@/lib/supabase/client"
-import { useOrganization } from "@/lib/contexts/organization-context"
+import { useOrganization } from "@/lib/contexts/OrganizationContext"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,

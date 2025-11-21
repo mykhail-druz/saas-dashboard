@@ -71,11 +71,11 @@ export function LandingNav() {
     if (isScrolled) {
       // Sticky navbar (fixed on scroll)
       if (isDark) {
-        // Dark theme - sticky: dark navbar background, light pills, hover inversion
+        // Dark theme - sticky: dark navbar background, white pills with black text
         return {
           baseColor: "hsl(var(--background))", // Navbar background and hover circle color
-          pillColor: "hsl(var(--muted))", // Pill background in normal state
-          pillTextColor: "hsl(var(--muted-foreground))", // Text in normal state
+          pillColor: "#ffffff", // Pill background in normal state (white)
+          pillTextColor: "#000000", // Text in normal state (black)
           hoveredPillTextColor: "hsl(var(--foreground))", // Text on hover (light on dark background)
         };
       } else {
@@ -90,12 +90,12 @@ export function LandingNav() {
     } else {
       // Absolute navbar (not scrolled, over content)
       if (isDark) {
-        // Dark theme - absolute: semi-transparent dark background, light pills
+        // Dark theme - absolute: semi-transparent dark background, white pills with black text
         return {
           baseColor: "rgba(20, 20, 20, 0.85)", // Navbar background and hover circle color
-          pillColor: "rgba(255, 255, 255, 0.2)", // Pill background in normal state
-          pillTextColor: "rgba(255, 255, 255, 0.95)", // Text in normal state
-          hoveredPillTextColor: "rgba(20, 20, 20, 1)", // Text on hover (dark on light circle)
+          pillColor: "#ffffff", // Pill background in normal state (white)
+          pillTextColor: "#000000", // Text in normal state (black)
+          hoveredPillTextColor: "#ffffff", // Text on hover (white on dark circle)
         };
       } else {
         // Light theme - absolute: semi-transparent light background, dark pills

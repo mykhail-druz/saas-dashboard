@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { createClient } from "@/lib/supabase/client"
-import { useNotifications } from "@/hooks/use-notifications"
+import { useNotifications } from "@/hooks/useNotifications"
 import {
   Table,
   TableBody,
