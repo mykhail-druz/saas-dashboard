@@ -571,7 +571,11 @@ const PillNav: React.FC<PillNavProps> = ({
                     onMouseLeave={hoverOut}
                     onClick={(e) => {
                       e.preventDefault();
-                      setIsMobileMenuOpen(false);
+                      if (onExternalMobileMenuToggle) {
+                        onExternalMobileMenuToggle();
+                      } else {
+                        setInternalMobileMenuOpen(false);
+                      }
                       const element = document.querySelector(item.href);
                       if (element) {
                         const navHeight = 64;
