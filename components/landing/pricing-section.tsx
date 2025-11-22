@@ -80,7 +80,7 @@ export function PricingSection() {
           </p>
         </ScrollReveal>
 
-        <ScrollRevealContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+        <ScrollRevealContainer staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <ScrollRevealItem 
               key={index} 
@@ -123,20 +123,20 @@ export function PricingSection() {
                     <Card
                       className="h-full flex flex-col hover:shadow-xl transition-shadow duration-300 border-0 shadow-lg md:scale-105 rounded-lg"
                     >
-                      <CardHeader className="text-center pb-6">
-                        <CardTitle className="text-xl sm:text-2xl mb-2">{plan.name}</CardTitle>
-                        <CardDescription className="text-sm sm:text-base mb-6">
+                      <CardHeader className="text-center pb-4 sm:pb-6 px-4 sm:px-6">
+                        <CardTitle className="text-lg sm:text-xl md:text-2xl mb-2">{plan.name}</CardTitle>
+                        <CardDescription className="text-xs sm:text-sm md:text-base mb-4 sm:mb-6">
                           {plan.description}
                         </CardDescription>
                         <div className="space-y-1">
                           <div className="flex items-baseline justify-center gap-2">
-                            <span className="text-4xl sm:text-5xl font-bold">
+                            <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
                               {plan.price === "0" ? (
                                 "Free"
                               ) : (
                                 <>
                                   ${plan.price}
-                                  <span className="text-xl sm:text-2xl text-muted-foreground">
+                                  <span className="text-lg sm:text-xl md:text-2xl text-muted-foreground">
                                     /{plan.period.split(" ")[0]}
                                   </span>
                                 </>
@@ -148,27 +148,27 @@ export function PricingSection() {
                           )}
                         </div>
                       </CardHeader>
-                      <CardContent className="flex-1">
-                        <ul className="space-y-3 sm:space-y-4">
+                      <CardContent className="flex-1 px-4 sm:px-6">
+                        <ul className="space-y-2 sm:space-y-3 md:space-y-4">
                           {plan.features.map((feature, featureIndex) => (
-                            <li key={featureIndex} className="flex items-start gap-3">
+                            <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
                               <div className="mt-0.5 shrink-0">
-                                <div className="h-5 w-5 rounded-full flex items-center justify-center bg-green-500 shadow-md">
-                                  <Check className="h-3 w-3 text-white font-semibold" />
+                                <div className="h-4 w-4 sm:h-5 sm:w-5 rounded-full flex items-center justify-center bg-green-500 shadow-md">
+                                  <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-white font-semibold" />
                                 </div>
                               </div>
-                              <span className="text-xs sm:text-sm text-muted-foreground">
+                              <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                                 {feature}
                               </span>
                             </li>
                           ))}
                         </ul>
                       </CardContent>
-                      <CardFooter>
+                      <CardFooter className="px-4 sm:px-6 pb-4 sm:pb-6">
                         <Button
                           className="w-full"
                           variant="default"
-                          size="lg"
+                          size="default"
                           asChild
                         >
                           <Link href="/register">{plan.cta}</Link>
@@ -182,20 +182,20 @@ export function PricingSection() {
                   <Card
                     className="h-full flex flex-col hover:shadow-xl transition-shadow duration-300 border-2 hover:border-primary/50 rounded-lg"
                   >
-                    <CardHeader className="text-center pb-6">
-                      <CardTitle className="text-xl sm:text-2xl mb-2">{plan.name}</CardTitle>
-                      <CardDescription className="text-sm sm:text-base mb-6">
+                    <CardHeader className="text-center pb-4 sm:pb-6 px-4 sm:px-6">
+                      <CardTitle className="text-lg sm:text-xl md:text-2xl mb-2">{plan.name}</CardTitle>
+                      <CardDescription className="text-xs sm:text-sm md:text-base mb-4 sm:mb-6">
                         {plan.description}
                       </CardDescription>
                       <div className="space-y-1">
                         <div className="flex items-baseline justify-center gap-2">
-                          <span className="text-4xl sm:text-5xl font-bold">
+                          <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
                             {plan.price === "0" ? (
                               "Free"
                             ) : (
                               <>
                                 ${plan.price}
-                                <span className="text-xl sm:text-2xl text-muted-foreground">
+                                <span className="text-lg sm:text-xl md:text-2xl text-muted-foreground">
                                   /{plan.period.split(" ")[0]}
                                 </span>
                               </>
@@ -207,27 +207,27 @@ export function PricingSection() {
                         )}
                       </div>
                     </CardHeader>
-                    <CardContent className="flex-1">
-                      <ul className="space-y-3 sm:space-y-4">
+                    <CardContent className="flex-1 px-4 sm:px-6">
+                      <ul className="space-y-2 sm:space-y-3 md:space-y-4">
                         {plan.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start gap-3">
+                          <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
                             <div className="mt-0.5 shrink-0">
-                              <div className="h-5 w-5 rounded-full flex items-center justify-center bg-green-500 shadow-md">
-                                <Check className="h-3 w-3 text-white font-semibold" />
+                              <div className="h-4 w-4 sm:h-5 sm:w-5 rounded-full flex items-center justify-center bg-green-500 shadow-md">
+                                <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-white font-semibold" />
                               </div>
                             </div>
-                            <span className="text-xs sm:text-sm text-muted-foreground">
+                            <span className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                               {feature}
                             </span>
                           </li>
                         ))}
                       </ul>
                     </CardContent>
-                    <CardFooter>
+                    <CardFooter className="px-4 sm:px-6 pb-4 sm:pb-6">
                       <Button
                         className="w-full"
                         variant="outline"
-                        size="lg"
+                        size="default"
                         asChild
                       >
                         <Link href="/register">{plan.cta}</Link>

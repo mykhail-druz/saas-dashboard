@@ -90,28 +90,28 @@ export function FeaturesSection() {
           </p>
         </ScrollReveal>
 
-        <ScrollRevealContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <ScrollRevealContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
               <ScrollRevealItem key={index} type="fadeUp" duration={0.6}>
                 <SpotlightCard className="h-full">
                   <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-2 hover:border-primary/50">
-                    <CardHeader>
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="p-3 rounded-lg bg-primary/10">
-                          <Icon className="h-6 w-6 text-primary" />
+                    <CardHeader className="px-4 sm:px-6 pt-4 sm:pt-6">
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
+                        <div className="p-2 sm:p-3 rounded-lg bg-primary/10 shrink-0">
+                          <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                         </div>
                         {feature.badge && (
-                          <Badge variant="secondary" className="text-xs">
+                          <Badge variant="secondary" className="text-xs shrink-0">
                             {feature.badge}
                           </Badge>
                         )}
                       </div>
-                      <CardTitle className="text-xl">{feature.title}</CardTitle>
+                      <CardTitle className="text-lg sm:text-xl">{feature.title}</CardTitle>
                     </CardHeader>
-                    <CardContent>
-                      <CardDescription className="text-base">
+                    <CardContent className="px-4 sm:px-6 pb-4 sm:pb-6">
+                      <CardDescription className="text-sm sm:text-base leading-relaxed">
                         {feature.description}
                       </CardDescription>
                     </CardContent>

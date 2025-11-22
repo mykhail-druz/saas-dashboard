@@ -43,26 +43,26 @@ export function CTASection() {
                 </div>
               </div>
 
-              <CardContent className="pt-12 pb-12 px-4 sm:px-6 lg:px-12 relative z-10">
-              <div className="text-center space-y-8 max-w-3xl mx-auto">
-                <ScrollReveal type="fadeUp" duration={0.6} delay={0.1} className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 mb-4">
-                    <Sparkles className="h-4 w-4 text-white" />
-                    <span className="text-sm font-medium text-white">Ready to start?</span>
+              <CardContent className="pt-8 sm:pt-10 md:pt-12 pb-8 sm:pb-10 md:pb-12 px-4 sm:px-6 lg:px-12 relative z-10">
+              <div className="text-center space-y-6 sm:space-y-7 md:space-y-8 max-w-3xl mx-auto">
+                <ScrollReveal type="fadeUp" duration={0.6} delay={0.1} className="space-y-4 sm:space-y-5 md:space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/20 bg-white/10 mb-2 sm:mb-3 md:mb-4">
+                    <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white" />
+                    <span className="text-xs sm:text-sm font-medium text-white">Ready to start?</span>
                   </div>
 
-                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white px-2">
                     Start free today
                   </h2>
 
-                  <p className="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed px-4">
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 leading-relaxed px-2 sm:px-4">
                     Join thousands of companies already using Analytics Pro to improve their analytics
                   </p>
 
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 px-4">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 px-2 sm:px-4">
                     <Button
-                      size="lg"
-                      className="text-base sm:text-lg px-6 sm:px-8 py-3 h-auto w-full sm:w-auto group"
+                      size="default"
+                      className="text-sm sm:text-base md:text-lg px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 h-auto w-full sm:w-auto group"
                       asChild
                     >
                       <Link href="/register">
@@ -71,16 +71,16 @@ export function CTASection() {
                       </Link>
                     </Button>
                     <Button
-                      size="lg"
+                      size="default"
                       variant="outline"
-                      className="text-base sm:text-lg px-6 sm:px-8 py-3 h-auto w-full sm:w-auto border-white/20 text-white dark:text-white bg-transparent hover:bg-white/10"
+                      className="text-sm sm:text-base md:text-lg px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 h-auto w-full sm:w-auto border-white/20 text-white dark:text-white bg-transparent hover:bg-white/10"
                       asChild
                     >
                       <Link href="#pricing">View pricing</Link>
                     </Button>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-white/60 pt-4">
+                  <p className="text-xs sm:text-sm text-white/60 pt-2 sm:pt-4 px-2">
                     No credit card required • Cancel anytime • 14-day free trial
                   </p>
                 </ScrollReveal>

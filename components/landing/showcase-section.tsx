@@ -8,9 +8,9 @@ import { SpotlightCard } from "@/components/ui/spotlight-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
-  BarChart3,
-  TrendingUp,
-  PieChart,
+  Users,
+  Plug,
+  FileText,
   ArrowRight,
 } from "lucide-react"
 import { ScrollReveal } from "@/components/scroll-reveal"
@@ -18,34 +18,34 @@ import Link from "next/link"
 
 const showcases = [
   {
-    icon: BarChart3,
-    title: "Interactive Charts",
+    icon: Users,
+    title: "Team Management",
     description:
-      "Powerful data visualization tools with detailed analysis capabilities",
-    features: ["Real-time updates", "PDF export", "Customizable dashboards"],
-    color: "#5227FF",
-    imageBase: "interactive-charts",
-    alt: "Dashboard with interactive charts showing revenue trends, traffic overview, top users, and category distribution",
+      "Complete control over your team with flexible access permissions and easy member invitations",
+    features: ["Email invitations", "Role-based access", "Organization management"],
+    color: "#3b82f6",
+    imageBase: "team-management",
+    alt: "Team management interface showing organization members, roles, and invitation system",
   },
   {
-    icon: TrendingUp,
-    title: "Trend Analysis",
+    icon: Plug,
+    title: "API Integrations",
     description:
-      "Automatic trend detection and forecasting of future metrics",
-    features: ["AI forecasting", "Historical data", "Trend visualization"],
-    color: "#7cff67",
-    imageBase: "trend-analysis",
-    alt: "Dashboard showing trend analysis with revenue trends, traffic overview, and KPI metrics",
+      "Connect external services via REST API and configure automated webhooks",
+    features: ["REST API connections", "Webhook configuration", "Secure key storage"],
+    color: "#10b981",
+    imageBase: "api-integrations",
+    alt: "Integrations page showing connected services, API keys management, and webhook configuration",
   },
   {
-    icon: PieChart,
-    title: "Detailed Analytics",
+    icon: FileText,
+    title: "Smart Reports",
     description:
-      "Deep data analysis with multiple metrics and dimensions",
-    features: ["Data segmentation", "Comparative analysis", "Cohort analysis"],
-    color: "#5227FF",
-    imageBase: "detailed-analytics",
-    alt: "Reports page with detailed analytics showing comprehensive data analysis and metrics",
+      "Create and automate analytical reports with customizable templates",
+    features: ["Automated generation", "Custom templates", "PDF export"],
+    color: "#8b5cf6",
+    imageBase: "smart-reports",
+    alt: "Reports page showing report creation, templates, and automated report generation",
   },
 ]
 
@@ -153,7 +153,7 @@ export function ShowcaseSection() {
           </p>
         </ScrollReveal>
 
-        <div className="space-y-12 sm:space-y-16">
+        <div className="space-y-8 sm:space-y-12 md:space-y-16">
           {showcases.map((showcase, index) => {
             const Icon = showcase.icon
             const isEven = index % 2 === 0
@@ -168,43 +168,43 @@ export function ShowcaseSection() {
                 <div
                   className={`flex flex-col ${
                     isEven ? "md:flex-row" : "md:flex-row-reverse"
-                  } items-center gap-6 sm:gap-8 w-full`}
+                  } items-center gap-4 sm:gap-6 md:gap-8 w-full`}
                 >
-                  <div className="flex-1 w-full">
+                  <div className="flex-1 w-full order-2 md:order-none">
                     <SpotlightCard className="h-full">
                       <Card className="h-full hover:shadow-xl transition-shadow duration-300 border-2">
-                        <CardHeader>
-                          <div className="flex items-center gap-4 mb-4">
+                        <CardHeader className="pb-4 sm:pb-6">
+                          <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                             <div
-                              className="p-3 sm:p-4 rounded-xl"
+                              className="p-2 sm:p-3 md:p-4 rounded-xl shrink-0"
                               style={{
                                 background: `${showcase.color}20`,
                                 color: showcase.color,
                               }}
                             >
-                              <Icon className="h-6 w-6 sm:h-8 sm:w-8" />
+                              <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8" />
                             </div>
-                            <CardTitle className="text-xl sm:text-2xl">{showcase.title}</CardTitle>
+                            <CardTitle className="text-lg sm:text-xl md:text-2xl">{showcase.title}</CardTitle>
                           </div>
-                          <CardDescription className="text-base">
+                          <CardDescription className="text-sm sm:text-base">
                             {showcase.description}
                           </CardDescription>
                         </CardHeader>
-                        <CardContent>
-                          <ul className="space-y-3 mb-6">
+                        <CardContent className="pt-0">
+                          <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                             {showcase.features.map((feature, featureIndex) => (
-                              <li key={featureIndex} className="flex items-center gap-3">
+                              <li key={featureIndex} className="flex items-center gap-2 sm:gap-3">
                                 <div
                                   className="h-2 w-2 rounded-full shrink-0"
                                   style={{ background: showcase.color }}
                                 />
-                                <span className="text-sm text-muted-foreground">
+                                <span className="text-xs sm:text-sm text-muted-foreground">
                                   {feature}
                                 </span>
                               </li>
                             ))}
                           </ul>
-                          <Button variant="outline" className="w-full sm:w-auto" asChild>
+                          <Button variant="outline" size="sm" className="w-full sm:w-auto" asChild>
                             <Link href="/register">
                               Try free
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -215,7 +215,7 @@ export function ShowcaseSection() {
                     </SpotlightCard>
                   </div>
 
-                  <div className="flex-1 w-full">
+                  <div className="flex-1 w-full order-1 md:order-none">
                     <ShowcaseImage showcase={showcase} index={index} />
                   </div>
                 </div>

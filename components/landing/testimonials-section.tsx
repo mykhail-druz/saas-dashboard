@@ -68,38 +68,38 @@ export function TestimonialsSection() {
           </p>
         </ScrollReveal>
 
-        <ScrollRevealContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <ScrollRevealContainer staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {testimonials.map((testimonial, index) => (
             <ScrollRevealItem key={index} type="fadeUp" duration={0.6}>
               <SpotlightCard className="h-full">
                 <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-2 hover:border-primary/50">
-                  <CardContent className="pt-6">
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-1">
+                  <CardContent className="pt-4 sm:pt-5 md:pt-6 px-4 sm:px-6 pb-4 sm:pb-6">
+                    <div className="space-y-3 sm:space-y-4">
+                      <div className="flex items-center gap-0.5 sm:gap-1">
                         {[...Array(testimonial.rating)].map((_, i) => (
                           <Star
                             key={i}
-                            className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                            className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400"
                           />
                         ))}
                       </div>
 
-                      <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
+                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
                         &quot;{testimonial.text}&quot;
                       </p>
 
-                      <div className="flex items-center gap-3 pt-4 border-t">
-                        <Avatar>
+                      <div className="flex items-center gap-2 sm:gap-3 pt-3 sm:pt-4 border-t">
+                        <Avatar className="h-8 w-8 sm:h-10 sm:w-10">
                           <AvatarImage
                             src={`/avatars/${testimonial.avatar}.webp`}
                             alt={testimonial.name}
                           />
-                          <AvatarFallback className="bg-primary text-primary-foreground">
+                          <AvatarFallback className="bg-primary text-primary-foreground text-xs sm:text-sm">
                             {testimonial.name.split(' ').map(n => n[0]).join('')}
                           </AvatarFallback>
                         </Avatar>
                         <div>
-                          <div className="font-semibold text-sm sm:text-base">
+                          <div className="font-semibold text-xs sm:text-sm md:text-base">
                             {testimonial.name}
                           </div>
                           <div className="text-xs sm:text-sm text-muted-foreground">

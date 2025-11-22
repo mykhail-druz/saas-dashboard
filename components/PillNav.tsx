@@ -22,6 +22,8 @@ export interface PillNavProps {
   pillTextColor?: string;
   onMobileMenuClick?: () => void;
   initialLoadAnimation?: boolean;
+  externalMobileMenuOpen?: boolean;
+  onExternalMobileMenuToggle?: () => void;
 }
 
 const PillNav: React.FC<PillNavProps> = ({
@@ -37,9 +39,15 @@ const PillNav: React.FC<PillNavProps> = ({
   pillTextColor,
   onMobileMenuClick,
   initialLoadAnimation = true,
+  externalMobileMenuOpen,
+  onExternalMobileMenuToggle,
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [internalMobileMenuOpen, setInternalMobileMenuOpen] = useState(false);
+  const isMobileMenuOpen =
+    externalMobileMenuOpen !== undefined
+      ? externalMobileMenuOpen
+      : internalMobileMenuOpen;
   const pathname = usePathname();
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
@@ -190,55 +198,60 @@ const PillNav: React.FC<PillNavProps> = ({
   };
 
   const toggleMobileMenu = () => {
-    const newState = !isMobileMenuOpen;
-    setIsMobileMenuOpen(newState);
-
-    const hamburger = hamburgerRef.current;
-    const menu = mobileMenuRef.current;
-
-    if (hamburger) {
-      const lines = hamburger.querySelectorAll(".hamburger-line");
-      if (newState) {
-        gsap.to(lines[0], { rotation: 45, y: 3, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: -45, y: -3, duration: 0.3, ease });
-      } else {
-        gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
-        gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
-      }
+    if (onExternalMobileMenuToggle) {
+      onExternalMobileMenuToggle();
+    } else {
+      const newState = !internalMobileMenuOpen;
+      setInternalMobileMenuOpen(newState);
+      animateMobileMenu(newState);
     }
-
-    if (menu) {
-      if (newState) {
-        gsap.set(menu, { visibility: "visible" });
-        gsap.fromTo(
-          menu,
-          { opacity: 0, y: 10, scaleY: 1 },
-          {
-            opacity: 1,
-            y: 0,
-            scaleY: 1,
-            duration: 0.3,
-            ease,
-            transformOrigin: "top center",
-          }
-        );
-      } else {
-        gsap.to(menu, {
-          opacity: 0,
-          y: 10,
-          scaleY: 1,
-          duration: 0.2,
-          ease,
-          transformOrigin: "top center",
-          onComplete: () => {
-            gsap.set(menu, { visibility: "hidden" });
-          },
-        });
-      }
-    }
-
     onMobileMenuClick?.();
   };
+
+  const animateMobileMenu = (newState: boolean) => {
+    const menu = mobileMenuRef.current;
+
+    if (!menu) return;
+
+    if (newState) {
+      gsap.set(menu, { visibility: "visible" });
+      gsap.fromTo(
+        menu,
+        { opacity: 0, y: 10, scaleY: 1 },
+        {
+          opacity: 1,
+          y: 0,
+          scaleY: 1,
+          duration: 0.3,
+          ease,
+          transformOrigin: "top center",
+        }
+      );
+    } else {
+      gsap.to(menu, {
+        opacity: 0,
+        y: 10,
+        scaleY: 1,
+        duration: 0.2,
+        ease,
+        transformOrigin: "top center",
+        onComplete: () => {
+          gsap.set(menu, { visibility: "hidden" });
+        },
+      });
+    }
+  };
+
+  // Анимировать меню при изменении внешнего состояния
+  useEffect(() => {
+    if (externalMobileMenuOpen !== undefined) {
+      // Небольшая задержка для правильной инициализации
+      const timer = setTimeout(() => {
+        animateMobileMenu(externalMobileMenuOpen);
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [externalMobileMenuOpen]);
 
   const isExternalLink = (href: string) =>
     href.startsWith("http://") ||
@@ -264,9 +277,9 @@ const PillNav: React.FC<PillNavProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div className={`relative w-full md:w-auto ${className}`}>
+    <div className={`relative w-auto ${className}`}>
       <nav
-        className={`w-full md:w-max flex items-center justify-between md:justify-start box-border ${className}`}
+        className={`w-auto md:w-max flex items-center md:justify-start box-border ${className}`}
         aria-label="Primary"
         style={cssVars}
       >
@@ -486,7 +499,7 @@ const PillNav: React.FC<PillNavProps> = ({
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
-          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative"
+          className="hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative"
           style={{
             width: "var(--nav-h)",
             height: "var(--nav-h)",
@@ -506,13 +519,13 @@ const PillNav: React.FC<PillNavProps> = ({
 
       <div
         ref={mobileMenuRef}
-        className="md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top"
+        className="md:hidden absolute top-[3em] left-2 right-2 sm:left-4 sm:right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top"
         style={{
           ...cssVars,
           background: "var(--base, #f0f0f0)",
         }}
       >
-        <ul className="list-none m-0 p-[3px] flex flex-col gap-[3px]">
+        <ul className="list-none m-0 p-2 sm:p-[3px] flex flex-col gap-2 sm:gap-[3px]">
           {items.map((item) => {
             const defaultStyle: React.CSSProperties = {
               background: "var(--pill-bg, #fff)",
@@ -528,7 +541,7 @@ const PillNav: React.FC<PillNavProps> = ({
             };
 
             const linkClasses =
-              "block py-3 px-4 text-[16px] font-medium rounded-[50px] transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)]";
+              "block py-5 px-6 sm:py-3 sm:px-4 text-lg sm:text-[16px] font-medium rounded-[50px] transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)] w-full";
 
             return (
               <li key={item.href}>
@@ -539,7 +552,13 @@ const PillNav: React.FC<PillNavProps> = ({
                     style={defaultStyle}
                     onMouseEnter={hoverIn}
                     onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                      if (onExternalMobileMenuToggle) {
+                        onExternalMobileMenuToggle();
+                      } else {
+                        setInternalMobileMenuOpen(false);
+                      }
+                    }}
                   >
                     {item.label}
                   </Link>
@@ -576,7 +595,13 @@ const PillNav: React.FC<PillNavProps> = ({
                     style={defaultStyle}
                     onMouseEnter={hoverIn}
                     onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                      if (onExternalMobileMenuToggle) {
+                        onExternalMobileMenuToggle();
+                      } else {
+                        setInternalMobileMenuOpen(false);
+                      }
+                    }}
                   >
                     {item.label}
                   </a>

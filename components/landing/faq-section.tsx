@@ -83,10 +83,10 @@ export function FAQSection() {
                 }`}
                 onClick={() => toggle(index)}
               >
-                <CardContent>
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <h3 className="text-base sm:text-lg font-semibold mb-2 pr-8">
+                <CardContent className="px-4 sm:px-6 py-3 sm:py-4">
+                  <div className="flex items-start justify-between gap-3 sm:gap-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-2 pr-6 sm:pr-8 leading-snug">
                         {faq.question}
                       </h3>
                       <AnimatePresence>
@@ -98,18 +98,18 @@ export function FAQSection() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed pt-2">
+                            <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed pt-2">
                               {faq.answer}
                             </p>
                           </motion.div>
                         )}
                       </AnimatePresence>
                     </div>
-                    <div className="shrink-0 mt-1">
+                    <div className="shrink-0 mt-0.5 sm:mt-1">
                       {openIndex === index ? (
-                        <ChevronUp className="h-5 w-5 text-primary" />
+                        <ChevronUp className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                       ) : (
-                        <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                        <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                       )}
                     </div>
                   </div>

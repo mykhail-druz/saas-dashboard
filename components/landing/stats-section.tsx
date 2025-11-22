@@ -53,24 +53,24 @@ export function StatsSection() {
           </p>
         </ScrollReveal>
 
-        <ScrollRevealContainer staggerDelay={0.15} className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <ScrollRevealContainer staggerDelay={0.15} className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {stats.map((stat, index) => {
             const Icon = stat.icon
             return (
               <ScrollRevealItem key={index} type="scale" duration={0.6}>
                 <Card className="text-center hover:shadow-lg transition-shadow duration-300 border-2 hover:border-primary/50">
-                  <CardContent className="pt-6 pb-6">
+                  <CardContent className="pt-4 sm:pt-5 md:pt-6 pb-4 sm:pb-5 md:pb-6 px-3 sm:px-4">
                     <div
-                      className={`inline-flex p-3 sm:p-4 rounded-full ${stat.bgColor} mb-4`}
+                      className={`inline-flex p-2 sm:p-3 md:p-4 rounded-full ${stat.bgColor} mb-2 sm:mb-3 md:mb-4`}
                     >
-                      <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${stat.color}`} />
+                      <Icon className={`h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 ${stat.color}`} />
                     </div>
-                    <div className="space-y-2">
-                      <div className="text-3xl sm:text-4xl md:text-5xl font-bold">
+                    <div className="space-y-1 sm:space-y-2">
+                      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
                         <CountUp to={stat.value} duration={2.5} separator="," />
                         <span className="text-primary">{stat.suffix}</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-muted-foreground">{stat.label}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-tight">{stat.label}</p>
                     </div>
                   </CardContent>
                 </Card>

@@ -9,7 +9,7 @@ import Galaxy from "@/components/Galaxy";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-16 md:py-24">
+    <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-12 sm:py-16 md:py-24">
       {/* Galaxy Background - always black background regardless of theme */}
       <div className="absolute inset-0 z-0 w-full h-full bg-black dark:bg-black">
         <Galaxy
@@ -44,7 +44,7 @@ export function HeroSection() {
               <span className="text-sm text-white/80">Available now</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold tracking-tight leading-tight text-white px-2">
               <div className="flex flex-col items-center min-h-[2.4em] justify-center">
                 <TypeAnimation
                   sequence={["Manage analytics", 1200]}
@@ -56,6 +56,7 @@ export function HeroSection() {
                     textAlign: "center",
                   }}
                   repeat={0}
+                  cursor={false}
                 />
                 <span
                   className="bg-clip-text text-transparent"
@@ -78,12 +79,13 @@ export function HeroSection() {
                       textAlign: "center",
                     }}
                     repeat={0}
+                    cursor={false}
                   />
                 </span>
               </div>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed px-4 min-h-[3em] flex items-center justify-center">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed px-4 min-h-[3em] flex items-center justify-center">
               <TypeAnimation
                 sequence={[
                   2200, // Delay after heading
@@ -95,6 +97,7 @@ export function HeroSection() {
                   display: "inline-block",
                 }}
                 repeat={0}
+                cursor={false}
               />
             </p>
 
@@ -146,7 +149,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-12 w-full max-w-4xl px-4"
+            className="grid grid-cols-3 gap-2 sm:gap-6 md:gap-8 pt-8 sm:pt-12 w-full max-w-4xl px-4"
           >
             {[
               { label: "Active users", value: "10K+" },
@@ -154,10 +157,10 @@ export function HeroSection() {
               { label: "Reports created", value: "50K+" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#5227FF] mb-2">
+                <div className="text-lg sm:text-3xl md:text-4xl font-bold text-[#5227FF] mb-0.5 sm:mb-2">
                   {stat.value}
                 </div>
-                <div className="text-xs sm:text-sm text-white/70">
+                <div className="text-[10px] sm:text-sm text-white/70 leading-tight">
                   {stat.label}
                 </div>
               </div>
